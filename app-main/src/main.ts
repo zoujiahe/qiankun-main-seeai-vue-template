@@ -17,6 +17,7 @@ import '../style/index.scss'
 
 const app = createApp(App).use(store).use(router).use(CommonPart).use(Antd)
 app.config.globalProperties.micro = {}
+app.config.globalProperties.importedScript = {}
 app.config.globalProperties.microApp = true
 startQiankun({
   singular: false,
