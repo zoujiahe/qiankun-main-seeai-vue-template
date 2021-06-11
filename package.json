@@ -1,5 +1,8 @@
 {
   "name": "qiankun-main-seeai-vue-template",
+  "microStart": "1",
+  "mainBase": "m",
+  "mainLayoutIndex": "/course-manage/profession-list",
   "version": "1.0.0",
   "description": "整合乾坤SEEAI通用vue主应用模板",
   "scripts": {

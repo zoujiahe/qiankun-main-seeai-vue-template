@@ -1,18 +1,21 @@
 import {
   createRouter,
-  createWebHashHistory,
+  createWebHashHistory, NavigationFailure,
   NavigationGuardNext,
   RouteLocationNormalized,
   RouteRecordRaw
 } from 'vue-router'
 import { DemoConstructRoute } from '../views/demo-construct'
+import { SystemManageRoute } from '@/app/views/system-manage'
+import { CourseManageRoute } from '@/app/views/course-manage'
+import { ArchivesManageRoute } from '@/app/views/archives-manage'
+import { ResourceManageRoute } from '@/app/views/resource-manage'
+import { Bus } from '@/common/services'
 import { guard } from './guard'
-
-const { microAppSetting } = require('../../../../package.json')
+const { microAppSetting, mainBase, mainLayoutIndex } = require('../../../../package.json')
 const config = microAppSetting[process.env.VUE_APP_environment]
-const currentSetting = config[0]
-const appMainBase = currentSetting.activeRule.split('/#/')[0]
-const appMainName = appMainBase.split('/')[1]
+const appMainBase = '/' + mainBase
+const appMainName = mainBase
 /**
  * 避开子路由404拦截
  */
@@ -41,7 +44,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: appMainBase,
-    component: () => import(/* webpackChunkName: "micro-app-main" */ '@layout/AppMainIndex.vue'),
+    component: () => import(/* webpackChunkName: "micro-app-main" */ '@layout/AppMain.vue'),
     name: appMainName,
     meta: {
       name: '主页'
@@ -55,7 +58,19 @@ const routes: Array<RouteRecordRaw> = [
           name: '首页'
         }
       },
-      DemoConstructRoute('demo-construct/:id')
+      DemoConstructRoute('demo-construct/:id'),
+      SystemManageRoute('system'),
+      CourseManageRoute('course-manage'),
+      ArchivesManageRoute('archives-manage'),
+      ResourceManageRoute('rm'),
+      {
+        path: ':catchAll(.*)*',
+        component: () => import(/* webpackChunkName: "main-not-found" */ '@layout/MainNotFound.vue'),
+        name: 'main-not-found',
+        meta: {
+          name: 'main-not-found'
+        }
+      }
     ]
   },
   {
@@ -83,5 +98,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => guard(to, from, next))
-
+router.afterEach((to: RouteLocationNormalized, from: RouteLocationNormalized, failure?: NavigationFailure | void) => {
+  if (to.path.indexOf(appMainBase) > -1 && to.path !== from.path) {
+    Bus.$emit('routerChange')
+  }
+})
 export default router

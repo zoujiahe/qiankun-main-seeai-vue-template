@@ -93,7 +93,7 @@ module.exports = {
       .use(ThemeColorReplacer, [{
         fileName: 'css/theme-colors.css',
         externalCssFiles: deploy ? ['./node_modules/ant-design-vue/dist/antd.css'] : [],
-        matchColors: getAntdSerials('#1890ff'), // 主色系列
+        matchColors: getAntdSerials('#00AB84'), // 主色系列
         injectCss: true,
         // 改变样式选择器，解决样式覆盖问题
         changeSelector (selector) {

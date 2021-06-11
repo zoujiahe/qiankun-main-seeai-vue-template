@@ -52,12 +52,13 @@
 import { defineComponent, reactive, toRaw, ref, UnwrapRef } from 'vue'
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
 import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface'
-import { LocalStorageUtil, SessionStorageUtil, ToolsUtil } from '../src/common/utils'
+import { gotoReview, LocalStorageUtil, SessionStorageUtil, ToolsUtil } from '../src/common/utils'
 import { auth } from '../src/app/api'
 import { message } from 'ant-design-vue'
 import { RouteLocationNormalizedLoaded, Router, useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { FormState, win } from '@/common/base'
+const { mainBase, mainLayoutIndex } = require('../../package.json')
 
 declare const window: win
 
@@ -115,10 +116,7 @@ export default defineComponent({
               if (res.data.user && res.data.user.telphone) {
                 res.data.user.password = formValue.password
                 store.commit('setUserInfo', res.data.user)
-                router.push({
-                  name: 'home',
-                  query: route.query
-                })
+                gotoReview(mainBase + mainLayoutIndex)
               } else {
                 message.error('未登录或登录已过期，请重新登录。')
               }

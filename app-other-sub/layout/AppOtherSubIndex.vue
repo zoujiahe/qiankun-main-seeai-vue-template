@@ -23,6 +23,7 @@
 <script lang="ts">
 import { defineComponent, getCurrentInstance } from 'vue'
 import { RouteLocationNormalized, Router, useRoute, useRouter } from 'vue-router'
+const { mainBase } = require('../../package.json')
 
 export default defineComponent({
   name: 'app-other-sub-index',
@@ -35,14 +36,14 @@ export default defineComponent({
     }
     const toLogin = (e) => {
       router.push({
-        path: '/micro-app-main/home'
+        path: `/${mainBase}/home`
       })
       e.stopPropagation()
       e.preventDefault()
     }
     const toDemoConstruct = (e) => {
       router.push({
-        path: '/micro-app-main/demo-construct/1',
+        path: `/${mainBase}/demo-construct/1`,
         query: {
           id: 0
         }

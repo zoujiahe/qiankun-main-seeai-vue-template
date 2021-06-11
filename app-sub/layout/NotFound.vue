@@ -12,10 +12,11 @@ import { RouteLocationNormalizedLoaded, Router, useRoute, useRouter } from 'vue-
 import { win } from '@/common/base'
 declare const window: win
 const { name } = require('../package.json')
-const { microAppSetting } = require('../../package.json')
+const { microAppSetting, appMainBase } = require('../../package.json')
 const currentSetting = microAppSetting[process.env.VUE_APP_environment].filter(item => item.name === name)[0]
 const mainSub = currentSetting.activeRule.split('/#')
-const main = mainSub[0]
+const main = '/' + appMainBase
+
 export default defineComponent({
   name: 'not-found',
   setup () {

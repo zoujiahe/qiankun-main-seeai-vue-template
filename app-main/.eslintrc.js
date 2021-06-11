@@ -20,9 +20,13 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off', // 允许require
     '@typescript-eslint/no-empty-function': 'off', // 允许空函数
     '@typescript-eslint/ban-ts-comment': 'off', // 支持ts-ignore
-    'vue/valid-v-model':['off'],
-    'vue/no-v-model-argument':['off'],
-    'camelcase': ['warn'],
-    'no-undef': ['warn']
+    '@typescript-eslint/no-non-null-assertion': 'off', // 支持非空断言
+    'no-case-declarations': 'off', // case变量声明
+    'symbol-description': 'off', // symbol空参
+    'vue/no-unused-components': 'off', // 未使用组件
+    'vue/valid-v-model':['off'], // v-modal验证参数支持
+    'vue/no-v-model-argument':['off'], // v-modal验证参数支持
+    'camelcase': ['warn'], // 非驼峰
+    'no-undef': ['warn'] // 未定义变量
   }
 }

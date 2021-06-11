@@ -8,7 +8,8 @@
 import { defineComponent, getCurrentInstance } from 'vue'
 import { win } from '@/common/base'
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
-import { ToolsUtil } from './common/utils'
+import { LocalStorageUtil, ToolsUtil } from './common/utils'
+import { CommonApi } from './app/api'
 
 declare const window: win
 export default defineComponent({
@@ -16,6 +17,12 @@ export default defineComponent({
   setup () {
     ToolsUtil.initTheme()
     window.__platform__ = 'platform-scholar'
+    CommonApi.getInfo().then((res) => {
+      if (res.data.status === 200) {
+        LocalStorageUtil.putOrgInfo(res.data.data)
+        LocalStorageUtil.putSchoolName(res.data.data.orgName)
+      }
+    })
     const instance = getCurrentInstance()
     let microApp
     if (instance) {
