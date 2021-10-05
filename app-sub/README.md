@@ -204,9 +204,8 @@ yarn install
 ### 更换部署目录
 全局替换<b>micro-app-main</b>等目录关键字即可。
 
-::: tip 温馨提示
-主应用和微应用分别单独部署即可,自成一体。 
-:::
+> 主应用和微应用分别单独部署即可,自成一体。 
+
 
 ## tag介绍
 + v1.0.0 一键初始化整合乾坤SEEAI通用vue主应用模板
@@ -226,6 +225,7 @@ yarn install
 6. [保利威](https://dev.polyv.net/2020/videoproduct/v-player-sdk/v-player-sdk-web/v-player-sdk-web-feature/play/)
 7. [SEEAI项目标准开发脚手架](http://oss.xccjh.top/vuebloger/)
 8. [SEEAI标准项目模板gitee源](https://gitee.com/xccjh-zjh)
+9. [一键换肤方案](https://gitee.com/xccjh/vue3-theme-peel)
 
 ## 微服务总线通讯方式
 
@@ -261,13 +261,14 @@ class QiankunActionsService {
 }
 export const QiankunActionsInstance = new QiankunActionsService()
 ```
-::: tip 温馨提示
-qiankun 内部提供了 initGlobalState 方法用于注册 MicroAppStateActions 实例用于通信，该实例有三个方法，分别是：
+
+> qiankun 内部提供了 initGlobalState 方法用于注册 MicroAppStateActions 实例用于通信，该实例有三个方法，分别是：
 - setGlobalState：设置 globalState - 设置新的值时，内部将执行 浅检查，如果检查到 globalState 发生改变则触发通知，通知到所有的 观察者 函数。
 - onGlobalStateChange：注册 观察者 函数 - 响应 globalState 变化，在 globalState 发生改变时触发该 观察者 函数。
 - offGlobalStateChange：取消 观察者 函数 - 该实例不再响应 globalState 变化。
-:::
+
 2. 主应用监听来微应用的数据变动以及子应用监听来自主应用的数据改动
+
 查看下面share总线通讯说明即可。
 
 ### Compiles and hot-reloads for development

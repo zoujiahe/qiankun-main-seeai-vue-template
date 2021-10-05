@@ -1,3 +1,4 @@
+# qiankun-main-seeai-vue-template
 ## qiankun-main-seeai-vue-template
 
 恒企SEEAI平台前端项目开发的通用乾坤微服务vue3主应用模板([6+通用模板源PC端主应用](https://gitee.com/xccjh-zjh))，支持微服务多应用。
@@ -30,6 +31,7 @@
 - VUE_APP_environment：微服务区分不同配置环境
 - VUE_APP_HTTPS：开发环境是否开启https
 
+## Project setup
 题库相关
 - VUE_APP_questionBank：题库后台地址，如增加问卷试卷用
 - VUE_APP_tkPage：题库前台地址，如做试卷问卷用
@@ -191,6 +193,7 @@ nc相关
 |- app-other-sub                                 微服务示例微应用
 |- package.json                                      微服务总配置文件
 ```
+yarn install
 
 ## 部署情况
 ### 常规部署
@@ -201,9 +204,8 @@ nc相关
 ### 更换部署目录
 全局替换<b>micro-app-main</b>等目录关键字即可。
 
-::: tip 温馨提示
-主应用和微应用分别单独部署即可,自成一体。 
-:::
+> 主应用和微应用分别单独部署即可,自成一体。 
+
 
 ## tag介绍
 + v1.0.0 一键初始化整合乾坤SEEAI通用vue主应用模板
@@ -223,6 +225,7 @@ nc相关
 6. [保利威](https://dev.polyv.net/2020/videoproduct/v-player-sdk/v-player-sdk-web/v-player-sdk-web-feature/play/)
 7. [SEEAI项目标准开发脚手架](http://oss.xccjh.top/vuebloger/)
 8. [SEEAI标准项目模板gitee源](https://gitee.com/xccjh-zjh)
+9. [一键换肤方案](https://gitee.com/xccjh/vue3-theme-peel)
 
 ## 微服务总线通讯方式
 
@@ -258,15 +261,17 @@ class QiankunActionsService {
 }
 export const QiankunActionsInstance = new QiankunActionsService()
 ```
-::: tip 温馨提示
-qiankun 内部提供了 initGlobalState 方法用于注册 MicroAppStateActions 实例用于通信，该实例有三个方法，分别是：
+
+> qiankun 内部提供了 initGlobalState 方法用于注册 MicroAppStateActions 实例用于通信，该实例有三个方法，分别是：
 - setGlobalState：设置 globalState - 设置新的值时，内部将执行 浅检查，如果检查到 globalState 发生改变则触发通知，通知到所有的 观察者 函数。
 - onGlobalStateChange：注册 观察者 函数 - 响应 globalState 变化，在 globalState 发生改变时触发该 观察者 函数。
 - offGlobalStateChange：取消 观察者 函数 - 该实例不再响应 globalState 变化。
-:::
+
 2. 主应用监听来微应用的数据变动以及子应用监听来自主应用的数据改动
+
 查看下面share总线通讯说明即可。
 
+### Compiles and hot-reloads for development
 ### Shared 通信
 1. Shared总线的通讯清单
 ```typescript
@@ -299,6 +304,7 @@ class SharedModule {
 }
 export default SharedModule
 ```
+yarn start
 2. 启动微应用总配置
 ```typescript
 // micro-app-config.ts
@@ -327,6 +333,8 @@ console.log('微前端位置数据： ====》')
 console.log(config)  // 👈 整合后的微服务启动配置
 export default config
 ```
+
+### Compiles and minifies for production
 3. package.json中微应用配置：
 ```typescript
   "microAppSetting": {
@@ -502,6 +510,7 @@ export {
   qiankunActions
 }
 ```
+yarn build
 5. 子应用入口接入share总线
 ```typescript
 import './public-path'
@@ -595,6 +604,8 @@ const { microAppSetting } = require('../../package.json')
 const microApp1Config = microAppSetting[process.env.VUE_APP_environment][0]
 const microApp2Config = microAppSetting[process.env.VUE_APP_environment][1]
 
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
 export default defineComponent({
   name: 'Home',
   setup () {
@@ -748,3 +759,4 @@ export default defineComponent({
 })
 </script>
 ```
+
