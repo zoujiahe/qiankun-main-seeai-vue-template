@@ -4,9 +4,6 @@
 
 ![](https://xccjhzjh.oss-cn-hongkong.aliyuncs.com/xccjh-images/seeai-tempalte-demo.gif)
 
-属于seeai技术转型方案的一部分：
-
-![](https://oss.xccjh.top/vuebloger/img/post/Snipaste_2021-06-15_16-57-39.png)
 
 ## 技术栈
 [vue3](https://v3.cn.vuejs.org/)+[typescript](https://www.tslang.cn/)+[ant-design-vue](https://2x.antdv.com/components/overview-cn/)+[qiankun](https://qiankun.umijs.org/zh)+ [ckeditor5-xccjh](https://gitee.com/xccjh/ckeditor5-xccjh) + [vue3-theme-peel](https://gitee.com/xccjh/vue3-theme-peel) + 
@@ -755,4 +752,6 @@ export default defineComponent({
 })
 </script>
 ```
+## seeai技术转型方案
 
+![](https://oss.xccjh.top/vuebloger/img/post/Snipaste_2021-06-15_16-57-39.png)
