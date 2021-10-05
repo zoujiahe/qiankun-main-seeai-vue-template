@@ -1,5 +1,4 @@
 # qiankun-main-seeai-vue-template
-## qiankun-main-seeai-vue-template
 
 恒企SEEAI平台前端项目开发的通用乾坤微服务vue3主应用模板([6+通用模板源PC端主应用](https://gitee.com/xccjh-zjh))，支持微服务多应用。
 
@@ -31,7 +30,6 @@
 - VUE_APP_environment：微服务区分不同配置环境
 - VUE_APP_HTTPS：开发环境是否开启https
 
-## Project setup
 题库相关
 - VUE_APP_questionBank：题库后台地址，如增加问卷试卷用
 - VUE_APP_tkPage：题库前台地址，如做试卷问卷用
@@ -193,8 +191,6 @@ nc相关
 |- app-other-sub                                 微服务示例微应用
 |- package.json                                      微服务总配置文件
 ```
-yarn install
-
 ## 部署情况
 ### 常规部署
 1. 主应用：http://xxx.com/﻿micro-app-main/
@@ -226,6 +222,8 @@ yarn install
 7. [SEEAI项目标准开发脚手架](http://oss.xccjh.top/vuebloger/)
 8. [SEEAI标准项目模板gitee源](https://gitee.com/xccjh-zjh)
 9. [一键换肤方案](https://gitee.com/xccjh/vue3-theme-peel)
+10. [富文本方案](https://gitee.com/xccjh/ckeditor5-xccjh)
+11. [网格拖拽方案](https://gitee.com/xccjh/vue3-draggable-drop)
 
 ## 微服务总线通讯方式
 
@@ -271,7 +269,6 @@ export const QiankunActionsInstance = new QiankunActionsService()
 
 查看下面share总线通讯说明即可。
 
-### Compiles and hot-reloads for development
 ### Shared 通信
 1. Shared总线的通讯清单
 ```typescript
@@ -304,7 +301,6 @@ class SharedModule {
 }
 export default SharedModule
 ```
-yarn start
 2. 启动微应用总配置
 ```typescript
 // micro-app-config.ts
@@ -510,7 +506,6 @@ export {
   qiankunActions
 }
 ```
-yarn build
 5. 子应用入口接入share总线
 ```typescript
 import './public-path'
