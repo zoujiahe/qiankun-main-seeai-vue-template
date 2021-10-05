@@ -330,7 +330,6 @@ console.log(config)  // 👈 整合后的微服务启动配置
 export default config
 ```
 
-### Compiles and minifies for production
 3. package.json中微应用配置：
 ```typescript
   "microAppSetting": {
@@ -599,8 +598,6 @@ const { microAppSetting } = require('../../package.json')
 const microApp1Config = microAppSetting[process.env.VUE_APP_environment][0]
 const microApp2Config = microAppSetting[process.env.VUE_APP_environment][1]
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
 export default defineComponent({
   name: 'Home',
   setup () {
